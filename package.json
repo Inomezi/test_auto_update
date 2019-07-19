@@ -1,15 +1,37 @@
 {
   "name": "test_auto_update",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "publish": "electron-builder --mac --win -p always",
+    "postinstall": "electron-builder install-app-deps"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^5.0.7"
+    "electron-log": "^3.0.6",
+    "electron-updater": "^4.1.2"
+  },
+  "build": {
+    "appId": "com.applyhead.multichat",
+    "productName": "Multichat",
+    "mac": {
+      "category": "public.app-category",
+      "type": "distribution"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Inomezi",
+        "repo": "test_auto_update"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^5.0.7",
+    "electron-builder": "^21.1.1"
   }
 }
